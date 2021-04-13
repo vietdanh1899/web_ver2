@@ -2,7 +2,7 @@
   "name": "CareerNetwork",
   "version": "1.0.0",
   "description": "Start NuxtJS from scratch",
-  "author": "duongvietminhtri",
+  "author": "Danh",
   "private": true,
   "scripts": {
     "dev": "nuxt",
