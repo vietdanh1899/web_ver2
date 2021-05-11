@@ -59,7 +59,7 @@ export default {
     locales: ['vi']
   },
   server: {
-    port: 8000
+    port: process.env.PORT || 8000
   },
   /*
   ** Nuxt.js modules
@@ -94,7 +94,7 @@ export default {
   ** See https://axios.nuxtjs.org/options
   */
   axios: {
-    baseURL:'http://13.250.58.251:3000/api/v1/'
+    baseURL:'http://careernetwork.ml/api/v1/'
   },
 
   // env: {
