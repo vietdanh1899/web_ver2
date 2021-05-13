@@ -17,16 +17,16 @@
         <a-menu-item key="/manage">
           <a-icon type="appstore" />
         </a-menu-item>
-        <a-menu-item @click="logOut" key="3">
+        <!-- <a-menu-item @click="logOut" key="3">
           <a-icon type="logout" />
-        </a-menu-item>
+        </a-menu-item> -->
       </a-menu>
 
       <div class="d-flex justify-content-between align-items-center mr-3">
         <a-dropdown>
           <a-menu slot="overlay">
-            <a-menu-item key="2"> <a-icon type="user" /> Profile</a-menu-item>
-            <a-menu-item key="1" @click="logOut"> <a-icon type="logout" />Log out </a-menu-item>
+            <a-menu-item key="1" @click="showUser"> <a-icon type="user" />Profile</a-menu-item>
+            <a-menu-item key="2" @click="logOut"> <a-icon type="logout" />Log out </a-menu-item>
           </a-menu>
             <div>
               <a-avatar style="border: 1.5px solid white;" size="large" src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
@@ -65,6 +65,10 @@ export default {
   },
 
   methods: {
+    showUser(){     
+      this.$store.commit('auth/SET_CURRENT_USER', null )
+      this.$router.push("/home")
+    },//ok vip
     logOut () {
       localStorage.removeItem("currentUser")
       this.$store.commit('auth/SET_CURRENT_USER', null )
