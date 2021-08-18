@@ -1,10 +1,10 @@
 <template>
   <a-layout-header class="d-flex justify-content-between align-items-center py-1 px-4 edit-header">
-    <div class="d-flex align-items-center">
+    <div class="header_icon d-flex align-items-center" @click="showUser">
       <img src="/images/logo.svg" alt="">
     </div>
 
-    <div class="d-flex align-items-center">
+    <div class="header_right d-flex align-items-center">
       <a-menu
         theme="dark"
         mode="horizontal"
