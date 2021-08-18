@@ -6,17 +6,17 @@
       <a-button class="create-button" @click="createRole" type="primary"><a-icon type="plus" /> CREATE</a-button>
 
       <a-table class="pt-4 admin-table" :columns="columns" :data-source="data" :loading="loading" bordered :row-key="record => record.id">
-        <span slot="createdat" slot-scope="text, record">
+        <span class="table_item" slot="createdat" slot-scope="text, record">
           <span v-if="record.createdat != null"> {{ changeStringToTime(record.createdat) }} </span>
         </span>
 
-        <span slot="updatedat" slot-scope="text, record">
+        <span class="table_item" slot="updatedat" slot-scope="text, record">
           <span v-if="record.createdat != null"> {{ changeStringToTime(record.updatedat) }} </span>
         </span>
 
-        <span slot="permission" slot-scope="text, record">
-          <a-button  type="primary" @click="getPermission(record)">
-            <a-icon type="eye" /> Permission
+        <span class="table_item" slot="permission" slot-scope="text, record">
+          <a-button class="btn_per"  type="primary" @click="getPermission(record)">
+            <a-icon type="eye" /> <span class="item_title"> Permission</span>
           </a-button>
         </span>
       </a-table>
@@ -52,5 +52,18 @@
   border-color: #6B5B95;
   width: 200px;
   height: 40px;
+}
+.btn_per {
+  display: flex;
+}
+.anticon-eye{
+  line-height:28px;
+}
+.table_item{
+  display:flex;
+  justify-content:center;
+}
+.item_title{
+  line-height:31px;
 }
 </style>

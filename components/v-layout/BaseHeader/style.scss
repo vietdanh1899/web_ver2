@@ -2,7 +2,15 @@
     box-shadow: 0 2px 12px 0 rgba(0,0,0,.1);
     background-color: #ffffff;
 }
-
+.header_icon{
+    cursor: pointer;
+}
+.ant-menu-item{
+    margin-right: 10px;
+}
+.anticon {
+    margin-right: 0px;
+}
 .logo {
   width: 50px;
   height: auto;

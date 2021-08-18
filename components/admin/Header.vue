@@ -87,4 +87,7 @@ export default {
   background: #fff;
   padding: 0
 }
+.ant-col{
+  margin-right: 10px;
+}
 </style>

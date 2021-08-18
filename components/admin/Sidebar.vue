@@ -5,10 +5,8 @@
         <div v-if="showNameCompany" class="pl-3 font--bold color-white font---text text-spacing">CAREER NETWORK</div>
       </div>
       <a-menu theme="dark" mode="inline" :defaultSelectedKeys= [getSelectedKey] @click="handleClick" >
-        
-        
         <a-sub-menu key="user">
-          <span slot="title"><a-icon type="user" /> <span>User</span></span>
+          <span class="menu_item" slot="title"><a-icon type="user" /> <span class="item_title">User</span></span>
           <a-menu-item key="/admin/user">
             <span>List User</span>
           </a-menu-item>
@@ -22,32 +20,32 @@
           </a-menu-item>
         </a-sub-menu>
 
-        <a-menu-item key="/admin/category">
+        <a-menu-item class="menu_item" key="/admin/category">
           <a-icon type="appstore" />
-          <span>Category</span>
+          <span class="item_title">Category</span>
         </a-menu-item>
 
-        <a-menu-item key="/admin/role">
+        <a-menu-item class="menu_item" key="/admin/role">
           <a-icon type="apartment" />
-          <span>Role</span>
+          <span class="item_title">Role</span>
         </a-menu-item>
 
-        <a-menu-item key="/admin/permission">
+        <a-menu-item class="menu_item" key="/admin/permission">
           <a-icon type="key" />
-          <span>Permisson</span>
+          <span class="item_title">Permisson</span>
         </a-menu-item>
 
-        <a-sub-menu key="jobs">
-          <span slot="title"><a-icon type="profile" /> <span>Jobs</span></span>
+        <a-sub-menu  key="jobs">
+          <span class="menu_item" slot="title"><a-icon type="profile" /> <span  class="item_title">Jobs</span></span>
           <a-menu-item key="/admin/jobs">
-            <span>List Jobs</span>
+            <span >List Jobs</span>
           </a-menu-item>
 
           <a-menu-item key="/admin/jobs/request">
-            <span>Job Request</span>
+            <span >Job Request</span>
           </a-menu-item>
 
-          <a-menu-item key="/admin/jobs/deleted">
+          <a-menu-item  key="/admin/jobs/deleted">
             <span>Deleted Jobs</span>
           </a-menu-item>
         </a-sub-menu>
@@ -125,5 +123,14 @@ export default {
 .logo {
   height: 64.25px;
   padding: 16px;
+}
+.menu_item{
+    display: flex;
+}
+.anticon{
+  line-height:40px;
+}
+.item_title{
+  line-height:46px;
 }
 </style>
