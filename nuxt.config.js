@@ -73,7 +73,8 @@ export default {
     '@nuxtjs/dotenv',
     '@nuxtjs/toast',
     'cookie-universal-nuxt',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    '@nuxtjs/proxy'
   ],
 
 
@@ -95,8 +96,14 @@ export default {
   */
   axios: {
     // baseURL:'https://careernetwork.ml/api/v1/'
-    baseURL:'https://be-it-network.herokuapp.com/api/v1/'
+    // baseURL:'https://vietdanh.pagekite.me/api/v1/'
+    prefix: 'https://7dc66fda7ef5.ap.ngrok.io/api/v1/',
+    proxy: true
   },
+
+  // proxy: {
+  //   '/api/v1/': { target: 'https://vietdanh.pagekite.me' } 
+  // },
 
   // env: {
   //   API_BASE_URL: process.env.API_BASE_URL || 'http://localhost:3009'
