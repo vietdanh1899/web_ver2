@@ -88,7 +88,7 @@ export default {
   padding: 0
 }
 .ant-col{
-  margin-right: 12px;
+  margin-right: 10px;
 
 }
 </style>
