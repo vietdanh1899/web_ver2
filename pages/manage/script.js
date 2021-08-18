@@ -74,6 +74,23 @@ export default {
       }
     },
 
+    async deny(item) {
+      try {
+        const jobId = item.job.id;
+        const cvId = item.cvId;
+        await this.$store.dispatch('application/denyCandidate', {cvId: cvId, jobId: jobId});
+        await this.$store.dispatch('application/fetchListData')
+        this.$notification["success"]({
+          message: 'SUCCESS',
+          description:
+          `Denied successfully!`
+        });
+      }
+      catch (error) {
+        this.handleError(error)
+      }
+    },
+
     async changeJob(value) {
       try {
         if(value == "all") await this.$store.dispatch('application/fetchListData')

@@ -15,7 +15,7 @@
 		  </div>
 
 		  <template v-for="(item, index) in application">
-        <div v-if="item.status == false" :key="index" class="box-body p-0">
+        <div v-bind:class="{classAcceptCandidate: item.status, classDenyCandidate: item.isDenied}" :key="index" class="box-body p-0">
 			    <div v-if="item.profile != null" class="p-3 d-flex align-items-center border-bottom osahan-post-header row">
 			  	  <div class="col-8 d-flex">
               <a-avatar class="mr-3" size="large" :src="item.profile.profileUrl" />
@@ -39,6 +39,10 @@
 
                 <a-button @click="accept(item)" style="background-color: #30AB4A" class="text-white">
                   <a-icon type="check" />
+                </a-button>
+
+                <a-button @click="deny(item)" style="background-color: #ff0000" class="text-white">
+                  <a-icon type="stop" />
                 </a-button>
               </div>
 			  		  <div class="text-right">3d</div>

@@ -18,7 +18,7 @@ export default {
         }
         if(e.appliedBy.length > 0) {
           e.appliedBy.forEach(p => {
-            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL})
+            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL, isDenied: p.isDenied, cvId: p.cvId})
           })
         }
       });
@@ -50,7 +50,7 @@ export default {
         }
         if(e.appliedBy.length > 0) {
           e.appliedBy.forEach(p => {
-            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL})
+            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL, isDenied: p.isDenied, cvId: p.cvId})
           })
         }
       });
@@ -78,4 +78,19 @@ export default {
       throw err
     }
   },  
+
+  async denyCandidate({state, commit, rootState}, data) {
+    try {
+      commit('auth/SET_LOADING', true, { root: true })
+      const response = await this.$axios.post(`/jobs/deny`,{}, {params: {
+        cvId: data.cvId,
+        jobId: data.jobId,
+      }});
+      console.log(response);
+      commit('auth/SET_LOADING', false, { root: true })
+    } catch (err) {
+      commit('auth/SET_LOADING', false, { root: true })
+      throw err
+    }
+  }
 }
