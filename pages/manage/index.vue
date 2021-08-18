@@ -31,18 +31,17 @@
 			  	  <div class="col-4 text-left d-flex flex-column">
 			  	    <div class="d-flex justify-content-end">
                 <a :href="item.cvURL" target="_blank">
-                  <a-button class="mr-2" type="primary">
+                  <a-button class="mr-2 btn-check2" type="primary" >
                     <!-- <a-icon type="vertical-align-bottom" /> -->
-                    <a-icon type="eye" />
+                    <a-icon type="eye" class = 'icon-check' />
                   </a-button>
                 </a>
-
-                <a-button @click="accept(item)" style="background-color: #30AB4A" class="text-white">
-                  <a-icon type="check" />
+                <a-button @click="accept(item)" style="background-color: #30AB4A" class="text-white btn-check btn-check1">
+                  <a-icon type="check" class = 'icon-check'/>
                 </a-button>
 
-                <a-button @click="deny(item)" style="background-color: #ff0000" class="text-white">
-                  <a-icon type="stop" />
+                <a-button @click="deny(item)" style="background-color: #808080" class="text-white btn-check1">
+                  <a-icon type="stop" class = 'icon-check'/>
                 </a-button>
               </div>
 			  		  <div class="text-right">3d</div>

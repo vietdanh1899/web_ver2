@@ -2,7 +2,7 @@
     background-color: green;
 }
 .classDenyCandidate {
-    background-color: red;
+    background-color: rgb(255, 253, 253);
 }
 
 .header {
@@ -342,6 +342,21 @@ p{
      font-size: 36px;
      line-height: 47px;
      width: 52px;
+ }
+ .btn-check{
+     margin-right: 7px;
+
+ }
+ .icon-check{
+    line-height: 26px;
+ }
+ .btn-check2{
+    display: flex;
+
+ }
+ .btn-check1{
+     display: flex;
+    
  }
  .list-icon {
      margin-bottom: 24px;
