@@ -37,7 +37,7 @@
                           <a @click="showDeleteConfirm(item.id)" class="d-flex align-items-center"><a-icon class="mr-2" type="delete" />Delete</a>
                         </a-menu-item>
                         <a-menu-item key="3">
-                          <nuxt-link :to="`/manage/`" class="d-flex align-items-center"><a-icon class="mr-2" type="appstore" />Candidate</nuxt-link>
+                          <nuxt-link :to="`/manage/${item.id}`" class="d-flex align-items-center"><a-icon class="mr-2" type="appstore" />Candidate</nuxt-link>
                         </a-menu-item>
                       </a-menu>
                     </a-dropdown>
