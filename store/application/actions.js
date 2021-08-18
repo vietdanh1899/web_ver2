@@ -18,7 +18,7 @@ export default {
         }
         if(e.appliedBy.length > 0) {
           e.appliedBy.forEach(p => {
-            arr.push({...p.user, job, status: p.status})
+            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL})
           })
         }
       });
@@ -40,9 +40,20 @@ export default {
         }
       })
       let arr = []
+      // response.data.data.forEach(e => {
+      //   arr.push({...e, status: e.applied.status})
+      // })
       response.data.data.forEach(e => {
-        arr.push({...e, status: e.applied.status})
-      })
+        let job = {
+          name: e.name, 
+          id: e.id
+        }
+        if(e.appliedBy.length > 0) {
+          e.appliedBy.forEach(p => {
+            arr.push({...p.user, job, status: p.status, cvURL: p.cvURL})
+          })
+        }
+      });
       console.log(arr)
       commit('SET_LIST', arr)
       commit('auth/SET_LOADING', false, { root: true })

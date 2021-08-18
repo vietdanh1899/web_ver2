@@ -95,7 +95,7 @@ export default {
   */
   axios: {
     // baseURL:'https://careernetwork.ml/api/v1/'
-    baseURL:'https://be-it-network.herokuapp.com/api/v1/'
+    baseURL:'http://localhost:3000/api/v1/'
   },
 
   // env: {

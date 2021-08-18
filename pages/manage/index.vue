@@ -30,9 +30,10 @@
 
 			  	  <div class="col-4 text-left d-flex flex-column">
 			  	    <div class="d-flex justify-content-end">
-                <a :href="item.profile.cvURL" target="_blank">
+                <a :href="item.cvURL" target="_blank">
                   <a-button class="mr-2" type="primary">
-                    <a-icon type="vertical-align-bottom" />
+                    <!-- <a-icon type="vertical-align-bottom" /> -->
+                    <a-icon type="eye" />
                   </a-button>
                 </a>
 
