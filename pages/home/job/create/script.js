@@ -170,7 +170,7 @@ export default {
       const data = new FormData()
       try {
         data.append('file', event.target.files[0]);
-        const response = await this.$axios.post(`/upload`, data)
+        const response = await this.$axios.post(`https://vietdanh.loca.lt/apply/upload`, data)
         this.form.introImg = response.data.data.url
         this.isDisabled = false
         this.upload = true

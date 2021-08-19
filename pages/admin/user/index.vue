@@ -28,7 +28,7 @@
 
         <span slot="active" slot-scope="text, record">
           <span v-if="record.roleId == 4 && record.active != true">
-            <a-popconfirm
+            <!-- <a-popconfirm
               class="mr-2"
               title="Are you sure accept this company?"
               ok-text="Yes"
@@ -38,7 +38,8 @@
               <a-button class="cn-btn-success" type="success">
                 Accept
               </a-button>
-            </a-popconfirm>
+            </a-popconfirm> -->
+            Pending
           </span>
 
           <span v-else> Active</span>
