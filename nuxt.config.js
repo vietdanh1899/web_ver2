@@ -97,7 +97,7 @@ export default {
   axios: {
     // baseURL:'https://careernetwork.ml/api/v1/'
     // baseURL:'https://vietdanh.pagekite.me/api/v1/'
-    prefix: 'https://7dc66fda7ef5.ap.ngrok.io/api/v1/',
+    prefix: 'https://10a61e00c085.ap.ngrok.io/api/v1/',
     proxy: true
   },
 
