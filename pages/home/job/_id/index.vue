@@ -3,8 +3,8 @@
     <div class="box shadow-sm rounded bg-white mb-3 overflow-hidden">
 			<div class="my-3 box-title border-bottom p-3 text-center">
 			  <h4 class="m-0">{{ job != null ? job.name : '' }}</h4>
-        <a-button @click="clickApply" class="font--bold font--18 w-100 mt-3" size="large" type="danger">
-          Apply Now
+        <a-button :href="'/manage/' + this.$route.params.id" class="font--bold font--18 w-100 mt-3" size="large" type="danger">
+          View candidate
         </a-button>
 		  </div>
       <div class="p-3 d-flex align-items-center">
