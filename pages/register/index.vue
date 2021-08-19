@@ -26,10 +26,8 @@
 
               <a-form-model ref="registerForm" :model="registerForm" :rules="rules">
                 <a-form-model-item class="form-validate">
-                  <a-radio-group v-model="type" @change="changeType">
-                    <a-radio value="employee">
-                      Employee
-                    </a-radio>
+                  <a-radio-group default-value="company">
+                    
                     <a-radio value="company">
                       Company
                     </a-radio>
@@ -44,11 +42,20 @@
                   <a-input :disabled="isDisabled" v-model="registerForm.email" autocomplete="off" placeholder="Email" @pressEnter="registerSubmit"/>
                 </a-form-model-item>
 
-                <a-form-model-item has-feedback prop="password" class="m-0 form-validate" >
-                  <a-input :disabled="isDisabled" type="password" v-model="registerForm.password" autocomplete="off" placeholder="Password" @pressEnter="registerSubmit"/>
+                <a-form-model-item has-feedback prop="phone"  class="m-0 form-validate">
+                  <a-input :disabled="isDisabled" v-model="registerForm.phone" autocomplete="off" placeholder="Phone" @pressEnter="registerSubmit"/>
                 </a-form-model-item>
-                <a-form-model-item has-feedback prop="confirmPassword" class="m-0 form-validate" >
-                  <a-input :disabled="isDisabled" type="password" v-model="registerForm.confirmPassword" autocomplete="off" placeholder="Confirm password" @pressEnter="registerSubmit"/>
+
+                <a-form-model-item has-feedback prop="city" class="m-0 form-validate">
+                  <a-select mode="multiple" size="large" class="city-select" :disabled="isDisabled" v-model="registerForm.city" placeholder="City">
+                    <a-select-option v-for="(el, index) in listCity" :key="index" :value="`${el.province_id}`">
+                      {{ el.province_name }}
+                    </a-select-option>
+                  </a-select>
+                </a-form-model-item>
+
+                <a-form-model-item has-feedback prop="website"  class="m-0 form-validate">
+                  <a-input :disabled="isDisabled" v-model="registerForm.website" autocomplete="off" placeholder="Website" @pressEnter="registerSubmit"/>
                 </a-form-model-item>
 
                 <a-form-model-item  class="form-button mb-0 mt-2">

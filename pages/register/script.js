@@ -1,42 +1,30 @@
-import { mapActions, mapState } from 'vuex'
+import {mapActions, mapState} from 'vuex'
 
 export default {
-    layout: 'fullpage',
-    middleware: 'notAuth',
-    data() {
-      let validatePass = (rule, value, callback) => {
-        if (value.trim() === '') {
-          callback(new Error('Please input password'));
-        } else {
-          callback();
-        }
-      };
-  
-      let validateName = (rule, value, callback) => {
-        if (value.trim() === '') {
-          callback(new Error('Please input name'));
-        } else {
-          callback();
-        }
-      };
-  
-      let validatePassConfirm = (rule, value, callback) => {
-        if (value.trim() === '') {
-          callback(new Error('Please confirm password'));
-        } else if (value !== (this.registerForm.password)) {
-          callback(new Error("Invalid confirm password"));
-        } else {
-          callback();
-        }
-      };
-  
-      return {
-        type: 'employee',
+  layout: 'fullpage',
+  middleware: 'notAuth',
+
+  async fetch() {
+    this.fetchData()
+  },
+
+  data() {
+    let validateName = (rule, value, callback) => {
+      if (value.trim() === '') {
+        callback(new Error('Please input name of company'));
+      } else {
+        callback();
+      }
+    };
+
+    return {
+        type: 'company',
         registerForm: {
           name: '',
           email: '',
-          password: '',
-          confirmPassword: '',
+          phone: '',
+          city: [],
+          website: undefined,
         },
         rules: {
           name:  [{ required: true, validator: validateName }],
@@ -47,71 +35,86 @@ export default {
             },
             {
               required: true,
-              message: 'Please input email',
+              message: 'Please input email company',
             },
           ],
-          password: [
-            { 
-              required: true,
-              validator: validatePass, 
-            }
-          ],
-  
-          confirmPassword: [
-            {
-              required: true,
-              validator: validatePassConfirm
-            }
-          ], 
+          phone: [{
+            required: true, message: 'Please input phone of company'
+          }],
+          city: [{
+            required: true, message: 'Please select company headquarters'
+          }]
         }
+    }
+  },
+
+  computed: {
+    ...mapState ({
+      listCity: (state) => state.city.listCity,
+      isDisabled: (state) => state.auth.isDisabled,
+    }),
+  },
+
+  methods: {
+    ...mapActions('auth', ['registerCompany']),
+
+    handleError(err) {
+      if(err.response) {
+        this.$notification["error"]({
+          message: 'ERROR',
+          description:
+            err.response.data.message
+        });
+      }
+      else {
+        this.$notification["error"]({
+          message: 'ERROR',
+          description:
+            err.message
+        });
       }
     },
 
-    computed: {
-      ...mapState ({
-        isDisabled: (state) => state.auth.isDisabled,
-      }),
+    async fetchData() {
+        try {
+          await this.$store.dispatch('city/getCity')
+        }
+        catch(error) {
+          this.handleError(error)
+        }
     },
 
-    methods: {
-      ...mapActions('auth', ['register']),
-
-      async registerSubmit(event) {
-        this.$refs.registerForm.validate(async valid => {
-          if (valid) {
-            try {
-              await this.register(this.registerForm)
-              this.$router.push('/')
+    registerSubmit(event) {
+      this.$refs.registerForm.validate(async valid => {
+        if (valid) {
+          try {
+            if(this.registerForm.city == undefined) {
+              delete this.registerForm.city
             }
-            catch(e) {
-              if(e.response) {
-                this.$notification["error"]({
-                  message: 'ERROR',
-                  description:
-                    e.response.data.message
-                });
-              }
-              else {
-                this.$notification["error"]({
-                  message: 'ERROR',
-                  description:
-                    e.message
-                });
-              }
-            }
-          } else {
-            return false;
+            await this.registerCompany(this.registerForm)
+            this.$notification["success"]({
+              message: 'SUCCESS',
+              description:
+                "The account will be confirmed and responded to the company soon"
+            });
+            this.$router.push("/login")
           }
-        });
-      },
-  
-      changeType(e) {
+          catch(error) {
+            this.handleError(error)
+          }
+        } else {
+          return false;
+        }
+      });
+    },
+
+    changeType(e) {
         if(e.target.value == "company") {
           this.$router.push("/register/company");
         }
         if(e.target.value == "employee") {
           this.$router.push("/register");
         }
-      }
-    },
-  }
+    }
+  },
+}
