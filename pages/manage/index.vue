@@ -40,11 +40,11 @@
                   <a-icon type="check" class = 'icon-check'/>
                 </a-button>
 
-                <a-button @click="deny(item)" style="background-color: #808080" class="text-white btn-check1">
+                <a-button @click="deny(item)" style="background-color: #B22222" class="text-white btn-check3">
                   <a-icon type="stop" class = 'icon-check'/>
                 </a-button>
               </div>
-			  		  <div class="text-right">3d</div>
+			  		  <div class="text-right"></div>
             </div>
 			  	</div>
 			  </div>
